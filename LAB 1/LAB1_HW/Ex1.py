@@ -2,7 +2,10 @@ from gmail import GMail, Message
 
 import datetime
 now = datetime.datetime.now()
+current_time = datetime.time(now.hour, now.minute)
+due_time = datetime.time(7, 1)
 
+print(current_time)
 gmail = GMail("adneytan@gmail.com", "tangocanh123")
 
 html_content = ''' <p><em>Dear Professor,</em></p>
@@ -13,8 +16,8 @@ html_content = ''' <p><em>Dear Professor,</em></p>
 <p>Anh Ta</p>
 '''
 
-
 msg = Message("Notice from Anh TA",to="taanh1999gha@gmail.com", html=html_content)
 
-if now.hour > 7:
+if current_time == due_time:
     gmail.send(msg)
+    print("Sent")
